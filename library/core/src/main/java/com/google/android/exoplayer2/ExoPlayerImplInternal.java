@@ -854,7 +854,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
     isRebuffering = false;
     mediaClock.start();
     for (Renderer renderer : renderers) {
-      if (isRendererEnabled(renderer)) {
+      if (isRendererEnabled(renderer) && !isRendererStarted(renderer)) {
         renderer.start();
       }
     }
@@ -1031,7 +1031,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
         notifyTrackSelectionRebuffer();
         livePlaybackSpeedControl.notifyRebuffer();
       }
-      stopRenderers();
+      // stopRenderers();
     }
 
     if (playbackInfo.playbackState == Player.STATE_BUFFERING) {
@@ -2913,6 +2913,10 @@ import java.util.concurrent.atomic.AtomicBoolean;
       formats[i] = newSelection.getFormat(i);
     }
     return formats;
+  }
+
+  private static boolean isRendererStarted(Renderer renderer) {
+    return renderer.getState() == Renderer.STATE_STARTED;
   }
 
   private static boolean isRendererEnabled(Renderer renderer) {

@@ -90,7 +90,7 @@ import com.google.android.exoplayer2.util.StandaloneMediaClock;
    *     clock is already provided.
    */
   public void onRendererEnabled(Renderer renderer) throws ExoPlaybackException {
-    @Nullable MediaClock rendererMediaClock = renderer.getMediaClock();
+    @Nullable MediaClock rendererMediaClock = null; // renderer.getMediaClock();
     if (rendererMediaClock != null && rendererMediaClock != rendererClock) {
       if (rendererClock != null) {
         throw ExoPlaybackException.createForUnexpected(

@@ -478,10 +478,12 @@ public class MediaCodecVideoRenderer extends MediaCodecRenderer {
   @Override
   public boolean isReady() {
     if (super.isReady()
+        /*
         && (renderedFirstFrameAfterReset
             || (dummySurface != null && surface == dummySurface)
             || getCodec() == null
-            || tunneling)) {
+            || tunneling)
+        */) {
       // Ready. If we were joining then we've now joined, so clear the joining deadline.
       joiningDeadlineMs = C.TIME_UNSET;
       return true;

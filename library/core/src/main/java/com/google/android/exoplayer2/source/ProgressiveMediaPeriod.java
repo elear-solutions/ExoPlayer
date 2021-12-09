@@ -389,6 +389,7 @@ import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
       return pendingResetPositionUs;
     }
     long largestQueuedTimestampUs = Long.MAX_VALUE;
+    /*
     if (haveAudioVideoTracks) {
       // Ignore non-AV tracks, which may be sparse or poorly interleaved.
       int trackCount = sampleQueues.length;
@@ -399,6 +400,7 @@ import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
         }
       }
     }
+    */
     if (largestQueuedTimestampUs == Long.MAX_VALUE) {
       largestQueuedTimestampUs = getLargestQueuedTimestampUs();
     }

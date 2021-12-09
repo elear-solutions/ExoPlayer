@@ -1588,11 +1588,13 @@ public abstract class MediaCodecRenderer extends BaseRenderer {
 
   @Override
   public boolean isReady() {
-    return inputFormat != null
+    return inputFormat != null;
+    /*
         && (isSourceReady()
             || hasOutputBuffer()
             || (codecHotswapDeadlineMs != C.TIME_UNSET
                 && SystemClock.elapsedRealtime() < codecHotswapDeadlineMs));
+     */
   }
 
   /** Returns the current playback speed, as set by {@link #setPlaybackSpeed}. */

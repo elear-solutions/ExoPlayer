@@ -535,7 +535,16 @@ public final class Util {
    * @return The executor.
    */
   public static ExecutorService newSingleThreadExecutor(String threadName) {
-    return Executors.newSingleThreadExecutor(runnable -> new Thread(runnable, threadName));
+    return Executors.newSingleThreadExecutor(runnable -> new Thread(runnable, threadName) {
+
+      @Override
+      public void interrupt() {
+        super.interrupt();
+
+        Log.e(TAG, "interrupted: " + getName() + ", by: " + Thread.currentThread().getName());
+        Log.e(TAG, "stack trace", new Exception("stack trace"));
+      }
+    });
   }
 
   /**
